@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>右键菜单</title>
+	<style type="text/css">
+		.menu{
+			width: 80px;
+			height: 100px;
+			background-color: #ccc;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			display: none;
+		}
+		li{
+			
+			height: 20px;
+			list-style: none;
+			text-align: center;
+			line-height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="menu" id="menu">
+		<li>全选</li>
+		<li>打印</li>
+		<li>复制</li>
+		<li>粘贴</li>
+	</div>
+	<script type="text/javascript">
+		window.onload = function (){	
+		document.onclick = function menuup(event){
+			event = event || window.event;
+			if (menu.style.display == "none") {		 		
+				menu.style.display = "block";
+				menu.style.left = event.clientX　- 10 +　"px";
+				menu.style.top = event.clientY - 10 + "px";
+			}
+			else {
+				menu.style.display = "none";
+			} 		
+		}
+	}	
+	</script>
+</body>
+</html>
