@@ -31,5 +31,26 @@
 			}
 			return pageHeight;
 		}
-	}
+	};
+
+	//选择兼容
+	window.kantMT.Selectors = {
+		querySA: function (){
+			return querySelectorAll();
+		},
+		matchS: function (element,selector) {
+			if(element.matchesSelectors){
+				return element.matchesSelectors(selector);
+			} else if(element.msmatchesSelector) {
+				return element.msmatchesSelector(selector);
+			} else if (element.mozmatchesSelectors) {
+				return element.mozmatchesSelectors(selector);
+			} else if (element.webkitmatchesSelectors){
+				return element.webkitmatchesSelectors(selectors);
+			} else {
+				throw new error ("not supported");
+			}
+		}
+
+	};
 })()
