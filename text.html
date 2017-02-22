@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>检测dom</title>
+</head>
+<body>
+	<button id="bt" class="id">按钮</button>
+	<div id ="box"></div>
+	<script type="text/javascript" src = "D:\github\10000\plug\ajax.js"></script>
+	<script type="text/javascript">
+		window.onload = function() {
+			var bt = document.getElementById('bt');
+			var box = document.getElementById('box');
+			bt.onclick = function() {				
+				ajax("http://rap.taobao.org/mockjsdata/10008/product/listProduct.do", "get","json");
+			};
+
+				
+		}
+	</script>
+</body>
+</html>
