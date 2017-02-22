@@ -32,6 +32,7 @@ function ajax(url,fc,type,data) {
   }
 }
 
+//支持IE5、6及IE7以后版本
 function createXHR (){
   if (typeof XMLHttpRequest != "undefined") {
     return new XMLHttpRequest();
