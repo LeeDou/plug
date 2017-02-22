@@ -1,3 +1,4 @@
+// 创建xhr对象
 function createXHR (){
 	if (typeof XMLHttpRequest != "undefined") {
 		return new XMLHttpRequest();
@@ -22,15 +23,45 @@ function createXHR (){
 	}
 }
 
-var xhr = createXHR();
-xhr.onreadystatechange =function(){
-	if (xhr.redyState == 4){
-		if (xhr.status>=200 && xhr.status<300 || xhr.status == 304) {
-			console.log(xhr.responseText);
-		} else {
-			console.log("Request was unsuccessful:" + xhr.status);
+function readyStateChange(xhr){
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState == 4) {
+			if (xhr.status >= 200 && xhr.status <300 || xhr.status == 304) {
+				if(type == 'text'){
+	        		return xhr.responseText;
+	      		} else if(type == 'json') {
+	        		var json = eval('('+xhr.responseText+')');//把传回来的字符串解析成json对象
+	        		return json;
+	    		} else if(type == 'xml') {
+	           		return xhr.responseXML; //返回的是一个XML DOM对象
+	        		
+	      		}
+			} else {
+				console.log("Request was unsuccessful:" + xhr.status);
+			}
 		}
+	};
+	
+}
+
+function doget(url,data) {
+	var data = '';
+	for (var d in jsonData){
+		data += (d + '=' +data[d] + '&')
 	}
-};
-xhr.open("get","uri",true);
-xhr.send(null);
+	var xhr = createXHR();
+	xhr.open("get", "url", true);
+	xhr.send(data);
+	readyStateChange(xhr);
+}
+
+function dopost(url,data){
+	var data = '';
+	for (var d in jsonData){
+		data += (d + '=' +data[d] + '&')
+	}
+	var xhr = createXHR();
+	xhr.open("post", "url", true);
+	xhr.send(data);
+	readyStateChange(xhr);
+}
