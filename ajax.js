@@ -18,14 +18,16 @@ function ajax(url,fc,type,data) {
   xhr.onreadystatechange = function (){    
     if(xhr.readyState == 4 && xhr.status == 200){
       if(type == 'text'){
-        return 
         console.log(xhr.responseText);
+        return text = xhr.responseText; 
       } else if(type == 'json'){
         var json = eval('('+xhr.responseText+')');//把传回来的字符串解析成json对象
         console.log(json);
+        return json;
       } else if(type == 'xml'){
         var oXml = xhr.responseXML; //返回的是一个XML DOM对象        
         console.log(oXml);
+        return oXml;
       }
  
     }
