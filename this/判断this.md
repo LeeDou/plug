@@ -9,4 +9,21 @@
 4. 如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到undefined， 否则绑定到全局对象。
   ` var bar =foo()`
 
-  
+### 箭头函数
+```
+ function foo() {
+ 	return (a)=>{
+ 		console.log(this.a);
+ 	};
+ }
+ var obj1 = {
+ 	a:2
+ };
+
+ var obj2 = {
+ 	a:3
+ };
+ var bar = foo.call(obj1);
+ bar.call(obj2);
+```
+foo() 内部的箭头函数会捕获调用时的foo() 的this。由于foo() 的this绑定到obj1，bar(应用箭头函数)的this也会绑定到obj1，箭头函数的绑定无法被修改。
