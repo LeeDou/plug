@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp测试页面</title>
+</head>
+<body>
+	<script>
+		function fn (data) {
+			console.log(data);	
+		}
+	</script>
+	<script type="text/javascript" src='http://localhost:3000/getinfo?callback=fn'></script>
+</body>
+</html>
